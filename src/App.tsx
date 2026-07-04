@@ -1,9 +1,7 @@
+import LoginPage from './components/LoginPage'
+
 function App() {
-  return (
-    <div>
-      Login page coming soon
-    </div>
-  )
+  return <LoginPage />
 }
 
 export default App
