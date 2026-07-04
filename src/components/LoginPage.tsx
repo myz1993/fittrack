@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Eye, EyeOff, AlertTriangle } from 'lucide-react'
+import './LoginPage.css'
 
 const FAKE_USER = { email: "test@example.com", password: "password123" }
 
@@ -25,6 +26,7 @@ function LoginPage() {
 
   async function handleSubmit() {
     const newErrors = { email: "", password: "" }
+    setServerError("")
 
     if (email === "") {
       newErrors.email = "This field is required."
@@ -111,10 +113,6 @@ function LoginPage() {
               {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
             </button>
           </div>
-        </div>
-
-        <div style={{ fontSize: '12px', color: 'gray', marginBottom: '8px' }}>
-          DEBUG — email: {email} | password: {password}
         </div>
 
         <div className="forgot-password">Forgot password?</div>
