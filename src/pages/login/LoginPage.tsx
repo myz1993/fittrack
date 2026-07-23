@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, AlertTriangle } from 'lucide-react'
+import { login } from '../../services/auth'
 import './LoginPage.css'
 
 const FAKE_USER = { email: "test@example.com", password: "password123" }
@@ -17,6 +19,7 @@ async function fakeLogin(email: string, password: string) {
 }
 
 function LoginPage() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -57,7 +60,8 @@ function LoginPage() {
       setErrors({ ...newErrors, password: "Incorrect password." })
       setServerError("Incorrect password. Please try again.")
     } else {
-      alert("Login successful!")
+      login()
+      navigate("/dashboard", { replace: true })
     }
   }
 
